@@ -1,9 +1,10 @@
-require("dotenv").config();
 const express = require("express");
 const app = express();
+require("dotenv").config();
+const mongoose = require("mongoose");
 const Payment = require("./models/Payment");
 const port = 5000;
-const mongoose = require("mongoose");
+const stripe = require("stripe")(process.env.STRIPE_SECRET);
 const db = process.env.DATABASE_URL;
 app.use(express.json());
 mongoose
